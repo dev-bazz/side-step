@@ -1,0 +1,94 @@
+/* The code snippet defines the styles for a sidebar and a menu within the sidebar. It sets the background color, border radius, padding, width, and color for the sidebar. It also sets styles for the menu items, including positioning, padding, and */
+@layer defaults, active;
+
+@layer defaults {
+	/* Base styling for the sidebar */
+	.sideBar {
+		background: linear-gradient(to right, #745df3, #8b61f3);
+		border-radius: 1rem;
+		padding-inline: clamp(2rem, 10vw, 5rem);
+		width: 100%;
+		color: white;
+	}
+
+	.sideBar .title {
+		margin-top: 40% !important;
+	}
+	.sideBar .menu {
+		margin: 0;
+		margin-top: 2rem;
+	}
+	.sideBar > .menu {
+		position: relative;
+	}
+	.sideBar .menu li > ul {
+		list-style: none !important;
+	}
+	.sideBar > .menu > {
+		padding-left: 2rem;
+	}
+	.sideBar > .menu > li {
+		position: relative;
+		padding-left: 2rem;
+		isolation: isolate;
+		contain: paint;
+		user-select: none;
+	}
+	.sideBar > .menu > li::before {
+		content: attr(data-number);
+		position: absolute;
+		font-size: 14;
+		left: 0;
+		width: 23px;
+		aspect-ratio: 1;
+		text-align: center;
+		border-radius: 50%;
+		z-index: 3;
+		border: 1px solid white;
+	}
+	.sideBar > .menu > li::after {
+		content: "";
+		position: absolute;
+		top: 30px;
+		height: 90%;
+		width: 2px;
+		background-color: white;
+		left: 12px;
+		z-index: 1;
+	}
+	.menu > * + * {
+		margin-top: 1rem;
+	}
+	.aside {
+		padding: 0.5rem;
+		max-width: 400px;
+		min-height: 98dvh;
+		display: flex;
+		justify-content: stretch;
+	}
+
+	.menu_wrapper > label + ul {
+		margin-top: 1rem;
+	}
+	.menu_wrapper ul {
+		font-size: 14px;
+		color: rgb(234, 234, 234);
+		cursor: pointer;
+	}
+}
+
+@layer active {
+	.complete::after {
+		background-color: rgb(12, 195, 12);
+	}
+
+	.complete {
+		height: 45px;
+	}
+
+	.sideBar > .menu > .complete::before {
+		content: url("./icon-check.svg") !important;
+		border: none;
+		scale: 1.1;
+	}
+}
